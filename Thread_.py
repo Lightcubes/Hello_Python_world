@@ -32,10 +32,10 @@ def counter(myId, count):
         r                   字符串（使用repr转换任意python对象)
         s                   字符串（使用str转换任意python对象）
 
+        (2) 
         print('{0} and {1}'.format('Geeks', 'Portal')) 
         print('{1} and {0}'.format('Geeks', 'Portal'))
         
-        (2)
         output>>>
         Geeks and Portal
         Portal and Geeks 
