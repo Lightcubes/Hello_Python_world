@@ -16,6 +16,7 @@ def counter(myId, count):
     for i in range(count):
         # time.sleep(1)
         '''
+        (1)
         print("The length of %s is %d" % (s,x))
         d,i                 带符号的十进制整数
         o                   不带符号的八进制
@@ -33,11 +34,13 @@ def counter(myId, count):
 
         print('{0} and {1}'.format('Geeks', 'Portal')) 
         print('{1} and {0}'.format('Geeks', 'Portal'))
-
+        
+        (2)
         output>>>
         Geeks and Portal
         Portal and Geeks 
-
+        
+        (3)
         without new line
         print(x, end = '')
 
