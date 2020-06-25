@@ -4,17 +4,20 @@ revision history
     2020-06-21  add print() detail
     2020-06-22  add mutex to ensure print() work correctly
     2020-06-24  replace sleep with mutex on existing to provide better performance
+    2020-06-25  use global variable to indicate subThread ending instead of mutex
+    2020-06-25  enhanced final version of _thread
 """
 import _thread as thread, time
 
 threadNumber = 5
-mutex = thread.allocate_lock()
+gmutex = thread.allocate_lock()
 threadExitMutex = [thread.allocate_lock() for i in range(threadNumber)]
+#exitIndicators = [False] * threadNumber
 
 
-def counter(myId, count):
+def counter(myId, count, mutex):
     for i in range(count):
-        # time.sleep(1)
+        time.sleep(1/100*(myId+1))  # to give up the CPU
         '''
         (1)
         print("The length of %s is %d" % (s,x))
@@ -45,22 +48,25 @@ def counter(myId, count):
         print(x, end = '')
 
         '''
-        mutex.acquire()
-        print('Thread id: [%s] ===> loop is %s' % (myId, i))
-        mutex.release()
+        with mutex:
+            print('Thread id: [%s] ===> loop is %s' % (myId, i))
     threadExitMutex[myId].acquire()
+#    exitIndicators[myId] = True  //global variables
 
 
 def main():
     for i in range(threadNumber):
-        thread.start_new_thread(counter, (i, threadNumber * 2))
-    # time.sleep(6)
+        thread.start_new_thread(counter, (i, threadNumber * 10, gmutex))
+    '''
+    time.sleep(6)
     for mutex in threadExitMutex:
         while not mutex.locked(): pass
+     '''
+    while not all (mutex.locked() for mutex in threadExitMutex):
+        time.sleep(1/100)
+#   while False in exitIndicators: pass
     print("Exiting ... ...")
 
 
 if __name__ == "__main__":
     main()
-
-
