@@ -1,5 +1,6 @@
+import _thread as _thread
 import threading
-import _thread as _thread, time
+import time
 
 
 def action(i):
