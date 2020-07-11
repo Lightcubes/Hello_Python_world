@@ -27,4 +27,18 @@ row = [7, 8, 9]
 =====================集合(sets)
 >>> {sum(row) for row in M}
 {24, 6, 15}
+集合是没有顺序的，当然也可以用下面的方法使他变得有序
+>>> {i:sum(M[i]) for i in range(3)}
+{0: 6, 1: 15, 2: 24}
 
+======================字典（Dict）
+* 字典是可变的
+D['quantity'] += 1
+
+初始化字典的两种方法
+(1) dict(name = 'Bob', job = 'Dev', age = 40)
+(2) dict(zip(['name', 'job'],['Bob','Dev']))
+
+字典嵌套
+if-test
+排序 需要先转化为list list(D.keys()).sort()
