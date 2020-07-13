@@ -1,0 +1,33 @@
+=======================迭代优化
+>>> squares = []
+>>> for x in [1, 2, 3, 4, 5]:          # This is what a list comprehension does        
+        squares.append(x ** 2)         # Both run the iteration protocol internally
+>>> squares
+[1, 4, 9, 16, 25]
+
+Both tools leverage the iteration protocol internally and produce the same result.
+The list comprehension, though, and related functional programming tools like map
+and filter, will often run faster than a for loop today on some types of code
+(perhaps even twice as fast)—a property that could matter in your programs for large
+data sets. Having said that, though, I should point out that performance measures
+are tricky business in Python because it optimizes so much, and they may vary from
+release to release.
+
+
+
+========================Tuple
+为什么需要这种奇奇怪怪的变量类型
+作为类似C语言中的const使用
+
+========================File
+File最重要的是文件编码方式
+
+========================Sets
+集合支持逻辑运算
+
+========================如何破坏程序的灵活性
+判断变量类型
+
+
+
+
